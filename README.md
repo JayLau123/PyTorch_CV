@@ -1,2 +1,2 @@
 # CNN-for-number-recognition
-CNN for image process
+CNN for simple image process
