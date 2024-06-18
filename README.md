@@ -62,3 +62,50 @@ Here, we use different convolution kernels, which is a 3 $\times$ 3 matrix, to d
 
 ![Picture1](https://user-images.githubusercontent.com/98719524/221042999-efb612fd-867a-45d6-a439-6eea09d32aea.png)
 
+Pooling is a fundamental operation in convolutional neural networks (CNNs) that reduces the spatial dimensions (i.e., width and height) of the input image for the next convolutional layer. It serves several purposes: 
+
+- Reducing the computational load and memory usage
+- Making the detection of features invariant to scale and orientation
+- Helping to prevent overfitting by providing an abstracted form of the representation.
+
+### Types of Pooling
+
+There are several types of pooling, but the two most common are:
+
+- **Max Pooling**: This is the most frequently used form of pooling in CNN architectures. Max pooling operates by sliding a filter (often 2x2 size) over the input and taking the maximum value from the region of the input covered by the filter. It essentially captures the most prominent feature that is, the highest value, within the region of interest.
+- **Average Pooling**: Instead of taking the maximum value, average pooling calculates the average of the elements in the region of the filter. This method can be seen as smoothing the input features, which sometimes helps reduce noise.
+
+### How Pooling Works
+
+- **Filter/Kernel Size**: This defines the region over which the operation is performed. Common sizes include 2x2 or 3x3.
+- **Stride**: This defines the step size the pooling operation moves the filter across the input. In many cases, the stride is equal to the filter size, which means that the pooling regions do not overlap.
+- **Padding**: Similar to convolution, padding can be applied to the input of a pooling layer. However, in pooling, padding is less common since reducing dimensionality is often desired.
+
+### Example of Max Pooling
+Suppose we have the following 4x4 matrix as an input:
+
+```
+| 1  3  2  4 |
+| 5  6  7  8 |
+| 9  10 11 12 |
+| 13 14 15 16 |
+```
+
+Using a 2x2 filter and a stride of 2 for max pooling, we would examine four regions:
+- Top-left 2x2 corner: `[1, 3, 5, 6]` → Maximum value is `6`
+- Top-right 2x2 corner: `[2, 4, 7, 8]` → Maximum value is `8`
+- Bottom-left 2x2 corner: `[9, 10, 13, 14]` → Maximum value is `14`
+- Bottom-right 2x2 corner: `[11, 12, 15, 16]` → Maximum value is `16`
+
+The output after max pooling would be:
+```
+| 6  8 |
+| 14 16 |
+```
+
+### Benefits of Pooling
+- **Dimensionality Reduction**: Reduces the number of parameters and computation in the network.
+- **Feature Invariance**: Helps to make the model invariant to small translations of the input.
+- **Noise Suppression**: Can help in eliminating noise and capturing dominant features by summarizing the presence of features in patches of the feature map.
+
+Pooling layers are typically placed between successive convolutional layers. Their role in reducing dimensionality and allowing deeper networks without increase in computational cost has made them an integral part of CNN architectures.
